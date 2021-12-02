@@ -1,0 +1,37 @@
+body {
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}
+
+p {
+    font-size: xx-large;
+}
+
+#pantalla {
+    border: groove 8px black;
+    background-color: rgb(10, 93, 247);
+}
+
+#boton {
+    background-color: blueviolet;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bolder;
+    padding: 3px;
+    border: solid 2px black;
+}
+
+#boton:hover {
+    /* Estilo que se activa al pasar el puntero sobre el boton */
+    background-color: grey;
+    font-size: 22px;
+    border: groove 4px white;
+}
