@@ -1,5 +1,5 @@
 /* Variables */
-var ctx;
+var ctx; /* CanvasRenderingContext2D */
 var canvas;
 var palabra;
 var letras = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
@@ -37,7 +37,7 @@ palabras_array.push("GARANTIA");
 palabras_array.push("BENEFICIO");
 palabras_array.push("OFERTA");
 
-/* Objetos */
+/* Objetos  creados usando funcion constructora: crear objetos de los que se puedan sacar instancias*/
 function Tecla(x, y, ancho, alto, letra) {
     this.x = x;
     this.y = y;
@@ -63,8 +63,8 @@ function Letra(x, y, ancho, alto, letra) {
 function dibujaTecla() {
     ctx.fillStyle = colorTecla;
     ctx.strokeStyle = colorMargen;
-    ctx.fillRect(this.x, this.y, this.ancho, this.alto);
-    ctx.strokeRect(this.x, this.y, this.ancho, this.alto);
+    ctx.fillRect(this.x, this.y, this.ancho, this.alto); /* rectangulo relleno */
+    ctx.strokeRect(this.x, this.y, this.ancho, this.alto); /* contorno rectangulo */
 
     ctx.fillStyle = "white";
     ctx.font = "bold 20px helvetica";
@@ -141,7 +141,7 @@ function pistaFunction(palabra) {
 
 
 
-    // Pintamos la palabra en el canvas //
+    // Pintamos la pista en el canvas //
     ctx.fillStyle = "black"; // color de la letra
     ctx.font = "bold 20px helvetica"; // tipo y tamaño de la letra
     ctx.fillText(pista, 10, 50); //   variable pista , seguido de la posx y posy
@@ -211,7 +211,7 @@ function horca(errores) {
 
 /* ajustar coordenadas */
 function ajusta(xx, yy) {
-    var posCanvas = canvas.getBoundingClientRect();
+    var posCanvas = canvas.getBoundingClientRect(); /*  devuelve el tamaño de un elemento y su posición relativa respecto a la ventana de visualización  */
     var x = xx - posCanvas.left;
     var y = yy - posCanvas.top;
     return { x: x, y: y }
@@ -248,7 +248,7 @@ function selecciona(e) {
             if (errores == 6) gameOver(errores);
         }
         /* Borra la tecla que se a presionado */
-        ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
+        ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2); /* Borra un área rectangular, dejándola totalmente transparente */
         tecla.x - 1;
         /* Ver si ha ganado y enviar funcion gameover */
         if (aciertos == palabra.length) gameOver(errores);
@@ -273,7 +273,8 @@ function gameOver(errores) {
     horca(errores);
 }
 
-/* Detectar si se ha cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o mostrar mensaje de error según sea el caso */
+
+/* Detectar si se ha cargado  el canvas, iniciamos las funciones necesarias para jugar o mostrar mensaje de error según sea el caso */
 window.onload = function() {
     canvas = document.getElementById("pantalla");
     if (canvas && canvas.getContext) {
