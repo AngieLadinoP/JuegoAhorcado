@@ -99,18 +99,52 @@ function pistaFunction(palabra) {
             pista = "";
             break;
         case 'MESA':
-            pista = "";
+            pista = "Donde se dejan cosas";
             break;
         case 'SILLA':
-            pista = "";
+            pista = "Sirve para descansar";
             break;
-        default: // El defaul se puede omitir // 
-            pista = "No hay pista aún";
+        case 'LAVADERO': 
+            pista = "Donde se limpia la ropa";
+            break;  
+        case 'SALA':
+            pista = "Donde se ve tv";
+            break;
+        case 'COMEDOR':
+            pista = "Donde se sirve la comida";
+            break;
+        case 'ESTUFA':
+            pista = " Un electrodomestico";
+            break;
+        case 'ESCRITORIO':
+            pista = "Donde se puede trabajar";
+            break;
+        case 'COMPUTADOR':
+            pista = "Donde se crean miles de cosas";
+            break;
+        case 'ARMARIO':
+            pista = "Donde se guarda la ropa";
+            break;
+        case 'REMATE': 
+            pista = "Donde hay ofertas";
+            break;  
+        case 'GARANTIA':
+            pista = "La tranquilidad de la compra";
+            break;
+        case 'BENEFICIO':
+            pista = "Lo que convence al cliente";
+            break;
+        case 'OFERTA':
+            pista = "Lo que más le gusta al cliente";
+            break;
     }
+
+  
+
     // Pintamos la palabra en el canvas , en este ejemplo se pinta arriba a la izquierda //
     ctx.fillStyle = "black"; // Aqui ponemos el color de la letra
     ctx.font = "bold 20px helvetica"; // aqui ponemos el tipo y tamaño de la letra
-    ctx.fillText(pista, 10, 15); // aqui ponemos la frase en nuestro caso la variable pista , seguido de la posx y posy
+    ctx.fillText(pista, 10, 50); // aqui ponemos la frase en nuestro caso la variable pista , seguido de la posx y posy
 }
 
 
