@@ -1,18 +1,24 @@
 body {
     width: 960px;
     margin: 0 auto;
-    overflow: hidden;
-    background-color: black;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
     color: white;
 }
 
 h1 {
     text-align: center;
-    font-size: large;
+    font-size: 50px;
+}
+
+footer{
+    text-align: center;
+    font-size: 50px;
+
 }
 
 p {
-    font-size: normal;
+    font-size: xx-large;
 }
 
 #pantalla {
