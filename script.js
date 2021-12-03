@@ -88,13 +88,13 @@ function dibujaCajaLetra() {
 }
 
 
-/// Funcion para dar una pista la usuario ////
+/// Funcion para dar una pista ////
 function pistaFunction(palabra) {
-    let pista = ""; // Se crea la variable local pista que contendra nuestra frase de pista
-    switch (palabra) { // Se crea un switch para poder controlar las pistas segun la palabra 
-        case 'COCINA': // Se debera hacer un case por cada palabra 
+    let pista = "";
+    switch (palabra) {
+        case 'COCINA':
             pista = "Donde se prepara comida";
-            break; // Es importante el break en cada case 
+            break;
         case 'BAÑO':
             pista = "";
             break;
@@ -104,9 +104,9 @@ function pistaFunction(palabra) {
         case 'SILLA':
             pista = "Sirve para descansar";
             break;
-        case 'LAVADERO': 
+        case 'LAVADERO':
             pista = "Donde se limpia la ropa";
-            break;  
+            break;
         case 'SALA':
             pista = "Donde se ve tv";
             break;
@@ -125,9 +125,9 @@ function pistaFunction(palabra) {
         case 'ARMARIO':
             pista = "Donde se guarda la ropa";
             break;
-        case 'REMATE': 
+        case 'REMATE':
             pista = "Donde hay ofertas";
-            break;  
+            break;
         case 'GARANTIA':
             pista = "La tranquilidad de la compra";
             break;
@@ -139,16 +139,16 @@ function pistaFunction(palabra) {
             break;
     }
 
-  
 
-    // Pintamos la palabra en el canvas , en este ejemplo se pinta arriba a la izquierda //
-    ctx.fillStyle = "black"; // Aqui ponemos el color de la letra
-    ctx.font = "bold 20px helvetica"; // aqui ponemos el tipo y tamaño de la letra
-    ctx.fillText(pista, 10, 50); // aqui ponemos la frase en nuestro caso la variable pista , seguido de la posx y posy
+
+    // Pintamos la palabra en el canvas //
+    ctx.fillStyle = "black"; // color de la letra
+    ctx.font = "bold 20px helvetica"; // tipo y tamaño de la letra
+    ctx.fillText(pista, 10, 50); //   variable pista , seguido de la posx y posy
 }
 
 
-/* Distribuir nuestro teclado con sus letras respectivas al acomodo de nuestro array */
+/* Distribuir teclado con sus letras respectivas al acomodo de nuestro arreglo*/
 function teclado() {
     var ren = 0;
     var col = 0;
@@ -177,7 +177,7 @@ function teclado() {
 }
 
 
-/* aqui obtenemos nuestra palabra aleatoriamente y la dividimos en letras */
+/* Obtener palabra aleatoriamente y dividirlo en letras */
 function pintaPalabra() {
     var p = Math.floor(Math.random() * palabras_array.length);
     palabra = palabras_array[p];
@@ -200,21 +200,13 @@ function pintaPalabra() {
     }
 }
 
-/* dibujar cadalzo y partes del pj segun sea el caso */
+/* mostrar partes del muñeco dependiendo de los fallos */
 function horca(errores) {
     var imagen = new Image();
     imagen.src = "imagenes/ahorcado" + errores + ".png";
     imagen.onload = function() {
-            ctx.drawImage(imagen, 355, 0, 230, 230);
-        }
-        /*************************************************
-        // Imagen 2 mas pequeña a un lado de la horca //       
-        var imagen = new Image();
-        imagen.src = "imagenes/ahorcado"+errores+".png";
-        imagen.onload = function(){
-            ctx.drawImage(imagen, 620, 0, 100, 100);
-        }
-        *************************************************/
+        ctx.drawImage(imagen, 355, 0, 230, 230);
+    }
 }
 
 /* ajustar coordenadas */
@@ -225,7 +217,7 @@ function ajusta(xx, yy) {
     return { x: x, y: y }
 }
 
-/* Detecta tecla clickeada y la compara con las de la palabra ya elegida al azar */
+/* Detecta tecla a la que el usuario le dio clic y la compara con las de la palabra ya elegida al azar */
 function selecciona(e) {
     var pos = ajusta(e.clientX, e.clientY);
     var x = pos.x;
@@ -243,14 +235,14 @@ function selecciona(e) {
     if (i < teclas_array.length) {
         for (var i = 0; i < palabra.length; i++) {
             letra = palabra.substr(i, 1);
-            if (letra == tecla.letra) { /* comparamos y vemos si acerto la letra */
+            if (letra == tecla.letra) { /* ver si la letra coincide*/
                 caja = letras_array[i];
                 caja.dibujaLetra();
                 aciertos++;
                 bandera = true;
             }
         }
-        if (bandera == false) { /* Si falla aumenta los errores y checa si perdio para mandar a la funcion gameover */
+        if (bandera == false) { /*si falla, aumenta el contador de errores hasta completar los 6 intentos, cdonde se termina el juego */
             errores++;
             horca(errores);
             if (errores == 6) gameOver(errores);
@@ -258,12 +250,12 @@ function selecciona(e) {
         /* Borra la tecla que se a presionado */
         ctx.clearRect(tecla.x - 1, tecla.y - 1, tecla.ancho + 2, tecla.alto + 2);
         tecla.x - 1;
-        /* checa si se gano y manda a la funcion gameover */
+        /* Ver si ha ganado y enviar funcion gameover */
         if (aciertos == palabra.length) gameOver(errores);
     }
 }
 
-/* Borramos las teclas y la palabra con sus cajas y mandamos msj segun el caso si se gano o se perdio */
+/* Borramos las teclas y la palabra con sus cajas y mostramos mensaje dependiendo si gana o pierde*/
 function gameOver(errores) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = "black";
@@ -281,7 +273,7 @@ function gameOver(errores) {
     horca(errores);
 }
 
-/* Detectar si se a cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o se le manda msj de error segun sea el caso */
+/* Detectar si se ha cargado nuestro contexco en el canvas, iniciamos las funciones necesarias para jugar o mostrar mensaje de error según sea el caso */
 window.onload = function() {
     canvas = document.getElementById("pantalla");
     if (canvas && canvas.getContext) {
