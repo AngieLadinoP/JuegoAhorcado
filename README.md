@@ -3,9 +3,9 @@
 </p> 
 <h3 align="center">Team</h3>
   <ul align="justify">
-    <li>Christopher Acosta</li>
-    <li>Angie Ladino</li>
-    <li>Erica Prieto</li>
+    <li>Acosta Christopher</li>
+    <li>Ladino Angie</li>
+    <li>Prieto Erica</li>
   </ul>
   
   See demo here [juegoahorcadoprogramate.netlify.app](https://juegoahorcadoprogramate.netlify.app)
